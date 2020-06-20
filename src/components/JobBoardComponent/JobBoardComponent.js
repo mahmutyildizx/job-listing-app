@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledBox,StyledImageContainer,StyledImage,StyledText,StyledH3,StyledH2,StyledParagraph,StyledTools,StyledSpan} from './style'
+import {StyledBox,StyledImageContainer,StyledImage,StyledText,StyledH3,StyledH2,StyledParagraph,StyledTools,StyledSpan,StyledNewSpan, StyledFeaturedSpan} from './style'
 
 const JobBoardComponent = ({
     job: {
@@ -17,31 +17,36 @@ const JobBoardComponent = ({
         tools
     }
 }) => {
-    const langAndTools = [];
+    const tags = [role, level];
 
     if(tools) {
-        langAndTools.push(...tools);
+        tags.push(...tools);
     }
     if(languages) {
-        langAndTools.push(...languages);
+        tags.push(...languages);
     }
 
     return (
-    <>
+        
         <StyledBox>
             <StyledImageContainer>
              <StyledImage src={logo} alt={company}></StyledImage>
             </StyledImageContainer>
             <StyledText>
-                <StyledH3>{company}</StyledH3>
+                <StyledH3>
+                    {company}
+                    {isNew && (<StyledNewSpan>New</StyledNewSpan>)}
+                    {featured && (<StyledFeaturedSpan>Featured</StyledFeaturedSpan>)}
+                </StyledH3>
+
                 <StyledH2>{position}</StyledH2>
                 <StyledParagraph>{postedAt} · {contract} · {location}</StyledParagraph>
             </StyledText>
         <StyledTools>
-            {langAndTools ? langAndTools.map((langAndTool) => <StyledSpan>{langAndTool}</StyledSpan>) : ""}
+            {tags ? tags.map((tag) => <StyledSpan>{tag}</StyledSpan>) : ""}
         </StyledTools>
         </StyledBox>
-    </>
+        
 );
 }
 

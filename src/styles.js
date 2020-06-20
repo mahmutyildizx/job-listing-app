@@ -11,6 +11,9 @@ export const GlobalStyle = createGlobalStyle`
 export const StyledContainer = styled.div`
     max-width: 1200px;
     margin: 0 auto;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
 `
 
 export const StyledHeader = styled.header`
@@ -19,6 +22,6 @@ export const StyledHeader = styled.header`
     margin-bottom: 2.5rem;
 
 `
-export const StyledImage = styled.img`
+export const StyledHeaderImage = styled.img`
     width: 100%;
 `
